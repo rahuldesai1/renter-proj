@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  product: one
+  duration: 2018-11-13
+  status: false
+
+two:
+  user: two
+  product: two
+  duration: 2018-11-13
+  status: false
