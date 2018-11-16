@@ -1,1 +1,4 @@
-You are signed in!
+<h1>Profile</h1>
+<h3> User: <%= current_user.username.capitalize %></h3> 
+<p><%= link_to 'Go Home', home_path %></p>
+<p><%= link_to 'Create a new product', product_new_path %></p>
