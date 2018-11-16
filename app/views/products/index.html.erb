@@ -1,4 +1,9 @@
 <h1> Product Details </h1>
+<h2><%= @current_product.name %></h2>
+<p><%= @current_product.description %></p>
+<p>Owner: <%= @current_product.Owner %></p>
+<p>Price: <%= @current_product.price %> </p>
+
 
 <td><%= link_to "Write a Review", review_path %></td><br>
 <td><%= link_to "Purchase", transaction_path %></td><br>
