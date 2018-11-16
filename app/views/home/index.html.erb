@@ -9,12 +9,3 @@
 	<%= link_to "Sign in", users_path %><br />
 <% end %>
 <hr>
-<% if @products %>
-	<% @products.each do |product| %>
-		<p><b>Name: <%= product.name %></b></p>
-		<p>Desciption: <%= product.description %></p>
-		<p>Price: $<%= product.price %></p>
-		<p><%= link_to "Product Details", product_path %></p>
-		<hr>
-	<% end %>
-<% end %>
