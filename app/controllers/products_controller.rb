@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
 	def index
-        @current_product = @product
+		@product = Product.find(params[:id])
 	end
 
 	def new
