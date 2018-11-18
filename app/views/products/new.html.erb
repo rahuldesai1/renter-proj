@@ -1,1 +1,17 @@
 <h1> Create a New Product </h1>
+
+<%= form_with url: "/product/new", method: "post" do |f| %>
+
+<p> 
+	Product Name: <%= f.text_field :name %>
+<p>
+
+<p>
+	Description: <%= f.text_field :description %>
+<p>
+
+<p>
+	Price: <%= f.text_field :price%>
+<p>
+<%= f.submit "Submit" %>
+<% end %>
