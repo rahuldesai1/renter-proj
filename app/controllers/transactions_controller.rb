@@ -4,7 +4,21 @@ class TransactionsController < ApplicationController
 	end
 
 	def make
-		transaction = Transaction.create(seller: @product.owner_id, product: @product, duration: 2, status: False, renter: @currnt_user)
-		redirect_to transaction_path
+		@product = Product.find(params[:product])
+		transaction = Transaction.create(
+			seller_id: @product.owner_id,
+			product_id: @product.id,
+			duration: Date.new(2001,2,3),
+			status: false,
+			created_at: DateTime.now,
+			updated_at: DateTime.now,
+			renter_id: current_user.id)
+		if !transaction.valid?
+            flash[:error] = transaction.errors.full_messages.to_sentence
+            redirect_to product_path(:id => @product)
+        else
+            redirect_to transaction_path
+        end
+
 	end
 end
