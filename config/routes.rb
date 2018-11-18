@@ -6,5 +6,7 @@ Rails.application.routes.draw do
   get "/product/details/:id", to: "products#index", as: "product"
   get "/product/review/new", to: "reviews#index", as: "review"
   get "/product/new", to: "products#new", as: "product_new"
+  post "/product/new", to: "products#create", as: "product_create"
   get "/transaction", to: "transactions#index", as: "transaction"
+  post "/make", to: "transactions#make", as: "make_transaction"
 end
