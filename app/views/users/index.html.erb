@@ -1,4 +1,19 @@
 <h1>Profile</h1>
-<h3> User: <%= current_user.username.capitalize %></h3> 
+<h3> Username: <%= current_user.username.capitalize %></h3>
+<h3> Email: <%= current_user.email %></h3>
+<h3> Balance: <%= current_user.balance %></h3>
+<h3> Products: <br>
+  <% if @products.kind_of?(Array) %>
+    <% @products.each do |prod| %>
+      <%=prod[:name]%>
+      <%=prod[:price]%>
+      <%=Product.find_by(id: prod[:id])%>
+      <%end%>
+  <%else%>
+      Name: <%=@products[:name]%> <br>
+      Price: <%=@products[:price]%>
+<%end%> </h3>
+
+
 <p><%= link_to 'Go Home', home_path %></p>
 <p><%= link_to 'Create a new product', product_new_path %></p>
