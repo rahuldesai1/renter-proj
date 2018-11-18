@@ -11,7 +11,7 @@ class ProductsController < ApplicationController
 
 		Product.create(name: params[:name], 
 			description: params[:description], 
-			owner_id: 3,
+			owner_id: current_user.id,
 			available: true, 
 			price: params[:price], 
 			created_at: DateTime.now,
