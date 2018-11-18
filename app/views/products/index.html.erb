@@ -3,8 +3,16 @@
 <p><%= @product.description %></p>
 <p>Owner: <%= @user.username %></p>
 <p>Price: $<%= number_with_precision(@product.price, :precision => 2) %> </p>
-<p>Rating: <%= @review.rating %> </p>
-<p>Comment: <%= @review.comment %> </p>
+<h3> Reviews: </h3>
+<% if @review.kind_of?(Array) %>
+    <% @review.each do |rev| %>
+        <p> Rating: <%= rev.rating %> </p>
+        <p> Comment: <%= rev.comment %> </p>
+    <% end %>
+<% else %>
+    <p> Rating: <%= @review.rating %> </p>
+    <p> Comment: <%= @review.comment %> </p>
+<% end %>
 
 <td><%= link_to 'Go Home', home_path %></td>
 <td><%= link_to "Write a Review", review_path %></td><br>

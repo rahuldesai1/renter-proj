@@ -15,7 +15,7 @@
   )
 end
 
-[['Laptop', 20, User.find_by(username: 'rahul').id, false], ['Car', 102.20, User.find_by(username: 'carolyn').id, false], ['Cup', 2, User.find_by(username: 'kelvin').id, true], ['Textbook', 10.5, User.find_by(username: 'sophia').id, true], ['Basketball', 12, User.find_by(username: 'anjali').id, true]].each do |name, price, user, status|
+[['Laptop', 20, User.find_by(username: 'rahul').id, true], ['Car', 102.20, User.find_by(username: 'carolyn').id, false], ['Cup', 2, User.find_by(username: 'kelvin').id, true], ['Textbook', 10.5, User.find_by(username: 'sophia').id, true], ['Basketball', 12, User.find_by(username: 'anjali').id, true]].each do |name, price, user, status|
   Product.create(
     name: name,
     description: 'This ' + name + ' is available for renting',
@@ -38,7 +38,7 @@ end
 [[5, User.find_by(username: 'rahul').id, Product.find_by(name: 'Laptop').id], [3, User.find_by(username: 'carolyn').id, Product.find_by(name: 'Car').id]].each do |rating, user, product|
   Review.create(
     rating: rating,
-    comment: 'This is a great' +  Product.find(product).name + '!',
+    comment: 'This is a great ' +  Product.find(product).name + '!',
     user_id: user,
     product_id: product,
   )
