@@ -5,5 +5,21 @@ class ProductsController < ApplicationController
 	end
 
 	def new
+
+	end
+
+	def create
+		@product = Product.new
+
+		Product.create(name: params[:name],
+			description: params[:description],
+			owner_id: current_user.id,
+			available: true,
+			price: params[:price],
+			created_at: DateTime.now,
+			updated_at: DateTime.now)
+
+		redirect_to home_path
+
 	end
 end
