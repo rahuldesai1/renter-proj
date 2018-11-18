@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
 	def index
 		@product = Product.find(params[:id])
 		@user = User.find(@product.owner_id)
+		@review = Review.find_by(product_id: @product.id)
 	end
 
 	def new

@@ -5,6 +5,7 @@ class TransactionsController < ApplicationController
 
 	def make
 		@product = Product.find(params[:product])
+
 		transaction = Transaction.create(
 			seller_id: @product.owner_id,
 			product_id: @product.id,
@@ -13,10 +14,12 @@ class TransactionsController < ApplicationController
 			created_at: DateTime.now,
 			updated_at: DateTime.now,
 			renter_id: current_user.id)
+
 		if !transaction.valid?
             flash[:error] = transaction.errors.full_messages.to_sentence
             redirect_to product_path(:id => @product)
         else
+			#@product.update()
             redirect_to transaction_path
         end
 
