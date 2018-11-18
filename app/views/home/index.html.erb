@@ -6,20 +6,15 @@
 	<%= link_to "Log out", destroy_user_session_path, :method => :delete %><br />
 
 	<% @products.each do |product| %>
-		<% if product.available %>
-
+		<% if product.available %> <br/>
 			<%= product.name %> <br/>
 			<%= product.description %> <br/>
 			<%= product.owner_id %> <br/>
 			<%= product.price %> <br/>
-			
-		<% end %>
+	<% end %>
 	<% end %>
 
 <% else %>
 	<%= link_to "Sign in", users_path %><br />
 <% end %>
 <hr>
-
-This is for testing:
-<p><%= link_to "Product Details", product_path(:id => 3) %></p>
