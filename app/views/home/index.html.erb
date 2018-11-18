@@ -3,15 +3,18 @@
 <% if user_signed_in? %>
 	<td><%= link_to "Profile", users_path %></td><br>
 	<br>
-	<%= link_to "Log out", destroy_user_session_path, :method => :delete %><br />
+	<%= link_to "Log out", destroy_user_session_path, :method => :delete %>
 
 	<% @products.each do |product| %>
-		<% if product.available %> <br/>
-			<%= product.name %> <br/>
+		<% if product.available %>
+			<hr>
+			<b><%= product.name %></b> <br/>
 			<%= product.description %> <br/>
-			<%= product.owner_id %> <br/>
-			<%= product.price %> <br/>
-	<% end %>
+			<br>
+			Price: $<%= product.price %> <br/>
+			<%= link_to "Product Details", product_path(:id => product.id) %>
+
+		<% end %>
 	<% end %>
 
 <% else %>
