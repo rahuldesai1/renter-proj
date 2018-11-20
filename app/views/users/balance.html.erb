@@ -1,0 +1,6 @@
+<h1>Add Balance</h1>
+
+<%= form_tag("/user/balance/add", :method => :post) %>
+	Amount:<br>
+	$<%= number_field_tag :balance, params[:balance], placeholder: 0 %> <br>
+	<%= submit_tag "Add" %>

@@ -1,7 +1,4 @@
 class TransactionsController < ApplicationController
-	def index
-
-	end
 
 	def make
 		@product = Product.find(params[:product])
@@ -22,6 +19,8 @@ class TransactionsController < ApplicationController
 			#@product.update()
             redirect_to transaction_path
         end
+
+        return 
 
 	end
 end
