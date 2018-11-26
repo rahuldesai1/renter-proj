@@ -1,1 +1,17 @@
-<h1>New Transaction</h1>
+<h1>Purchase confirmation </h1>
+
+<p> Item:  <%= @product.name %>
+<p> Price per day: $<%= number_with_precision(@product.price, :precision => 2) %> </p>
+<p> Return date: <%= @date %> </p>
+<p> Today's date: <%= Date.today %>
+<p> Number of days: <%= (@date - Date.today).to_i %> </p>
+<p> Total: $<%= number_with_precision(@product.price * (@date - Date.today), :precision => 2) %></p>
+
+<%= form_tag(make_transaction_path, :method => :post) do %>
+    <%= hidden_field_tag(:product, @product.id) %>
+    <%= hidden_field_tag(:date, @date) %>
+    <%= hidden_field_tag(:cost, @product.price * (@date - Date.today)) %>
+	<%= submit_tag "Purchase" %>
+<% end %>
+
+<%= button_to 'Cancel', product_path(:id => @product), method: :get %>

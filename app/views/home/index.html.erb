@@ -12,7 +12,7 @@
 			<%= product.description %> <br/>
 			<br>
 			<%= image_tag product.img %> <br/>
-			Price: $<%= product.price %> <br/>
+			Price: $<%= number_with_precision(product.price, :precision => 2) %>/day <br/>
 			<%= link_to "Product Details", product_path(:id => product.id) %>
 
 		<% end %>
