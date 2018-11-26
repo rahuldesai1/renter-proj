@@ -1,17 +1,37 @@
 <h1>Profile</h1>
-<h3> Username: <%= current_user.username.capitalize %></h3>
+<% if current_user.username %>
+	<h3> Username: <%= current_user.username.capitalize %></h3>
+<% else %>
+	<p><%= link_to 'Create a Username', username_path %></p>
+<% end %>
 <h3> Email: <%= current_user.email %></h3>
-<h3> Balance: <%= current_user.balance %></h3>
-<h3> Products: <br>
+
+<% if current_user.balance == 0 %>
+	<p><%= link_to 'Add Balance', add_balance_path %></p>
+<% else %>
+	<h3> Balance: $<%= current_user.balance %></h3>
+	<p><%= link_to 'Add Balance', add_balance_path %></p>
+<% end %>
+<hr>
+<h3> Products: <br> </h3>
+<%if @products %> 
   <% if @products.kind_of?(Array) %>
     <% @products.each do |prod| %>
+<<<<<<< HEAD
       Name: <%=prod[:name]%>
       Price: <%=prod[:price]%>
+=======
+      <%=prod[:name]%>
+      $<%=prod[:price]%>/week
+      <%=Product.find_by(id: prod[:id])%>
+>>>>>>> bf2e5893ec4023dd335f597593c6ca61464a0242
       <%end%>
   <%else%>
       Name: <%=@products[:name]%> <br>
-      Price: <%=@products[:price]%>
-<%end%> </h3>
+      Price: $<%=@products[:price]%>/week
+	<%end%> 
+<% end %>
+<hr>
 
 <h3> Transactions: <br>
   <% if @transactions.kind_of?(Array) %>
