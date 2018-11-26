@@ -11,6 +11,7 @@
 			<b><%= product.name %></b> <br/>
 			<%= product.description %> <br/>
 			<br>
+			<%= image_tag product.img %> <br/>
 			Price: $<%= product.price %> <br/>
 			<%= link_to "Product Details", product_path(:id => product.id) %>
 
