@@ -19,5 +19,5 @@
 <% end %>
 
 <td><%= link_to 'Go Home', home_path %></td><br>
-<td><%= link_to "Write a Review", review_path %></td><br>
+<td><%= link_to "Write a Review", review_path(product: @product) %></td><br>
 <td><%= link_to "Purchase", make_transaction_path(product: @product), method: :post %></td><br>
