@@ -18,7 +18,7 @@ end
 [['Laptop', 20, User.find_by(username: 'rahul').id, false, "https://imgur.com/M6knjmB.jpg"], ['Car', 102.20, User.find_by(username: 'carolyn').id, false, "https://imgur.com/bVc9vXS.jpg"], ['Cup', 2, User.find_by(username: 'kelvin').id, true, "https://imgur.com/cF0fCar.jpg"], ['Textbook', 10.5, User.find_by(username: 'sophia').id, true, "https://imgur.com/O5DAux0.jpg"], ['Basketball', 12, User.find_by(username: 'anjali').id, true, "https://imgur.com/bcNafMi.jpg"]].each do |name, price, user, status, img|
   Product.create(
     name: name,
-    description: 'This' + name + 'is available for renting',
+    description: 'This ' + name + ' is available for renting',
     owner_id: user,
     available: status,
     price: price,
