@@ -18,7 +18,8 @@ class ProductsController < ApplicationController
 			available: true,
 			price: params[:price],
 			created_at: DateTime.now,
-			updated_at: DateTime.now)
+			updated_at: DateTime.now,
+			img: params[:img])
 
 		redirect_to home_path
 
