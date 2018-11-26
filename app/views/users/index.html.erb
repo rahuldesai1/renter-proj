@@ -5,13 +5,24 @@
 <h3> Products: <br>
   <% if @products.kind_of?(Array) %>
     <% @products.each do |prod| %>
-      <%=prod[:name]%>
-      <%=prod[:price]%>
-      <%=Product.find_by(id: prod[:id])%>
+      Name: <%=prod[:name]%>
+      Price: <%=prod[:price]%>
       <%end%>
   <%else%>
       Name: <%=@products[:name]%> <br>
       Price: <%=@products[:price]%>
+<%end%> </h3>
+
+<h3> Transactions: <br>
+  <% if @transactions.kind_of?(Array) %>
+    <% @transactions.each do |prod| %>
+      Name: <%=Product.find_by(id: prod[:product_id])[:name]%>
+      Price: <%=Product.find_by(id: prod[:product_id])[:price]%>
+      Current?: <%=Product.find_by(id: prod[:product_id])[:status]%>
+      <%end%>
+  <%elif @transactions%>
+      Name: <%=Product.find_by(id: @transactions[:product_id])[:name]%> <br>
+      Price: <%=Product.find_by(id: @transactions[:product_id])[:price]%>
 <%end%> </h3>
 
 
