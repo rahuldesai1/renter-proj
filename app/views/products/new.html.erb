@@ -1,8 +1,12 @@
+<head>
+		<title> New Product | Renter.com</title>
+</head>
+
 <h1> Create a New Product </h1>
 
 <%= form_with url: "/product/new", method: "post" do |f| %>
 
-<p> 
+<p>
 	Product Name: <%= f.text_field :name %>
 <p>
 

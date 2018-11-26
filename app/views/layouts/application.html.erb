@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Your Rails App</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +9,20 @@
   </head>
 
   <body>
+    <header>
+      <div id="header">
+        <h1 id="page-name">Renter.com</h1>
+      </div>
+      <nav>
+
+        <% if user_signed_in? %>
+        	<a><%= link_to "Profile", users_path %></a>
+        	<a><%= link_to "Log out", destroy_user_session_path, :method => :delete %></a>
+        <% else %>
+          <a><%= link_to "Sign in", users_path %></a>
+        <%end%>
+      </nav>
+    </header>
     <%= yield %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>

@@ -1,3 +1,7 @@
+<head>
+		<title> <%= current_user.username.capitalize %>'s Profile | Renter.com</title>
+</head>
+
 <h1>Profile</h1>
 <% if current_user.username %>
 	<h3> Username: <%= current_user.username.capitalize %></h3>
@@ -14,22 +18,16 @@
 <% end %>
 <hr>
 <h3> Products: <br> </h3>
-<%if @products %> 
+<%if @products %>
   <% if @products.kind_of?(Array) %>
     <% @products.each do |prod| %>
-<<<<<<< HEAD
       Name: <%=prod[:name]%>
       Price: <%=prod[:price]%>
-=======
-      <%=prod[:name]%>
-      $<%=prod[:price]%>/week
-      <%=Product.find_by(id: prod[:id])%>
->>>>>>> bf2e5893ec4023dd335f597593c6ca61464a0242
       <%end%>
   <%else%>
       Name: <%=@products[:name]%> <br>
       Price: $<%=@products[:price]%>/week
-	<%end%> 
+	<%end%>
 <% end %>
 <hr>
 

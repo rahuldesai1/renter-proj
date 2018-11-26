@@ -13,3 +13,43 @@
  *= require_tree .
  *= require_self
  */
+
+ @import url('https://fonts.googleapis.com/css?family=Chelsea+Market|Nanum+Gothic');
+
+body{
+  background-color: #F7F5F5;
+  font-family: 'Nanum Gothic', sans-serif;
+}
+
+h1 {
+   font-size: 3em;
+   padding: 0em 1em 0em 2em;
+ }
+
+ a {
+   text-decoration: none;
+   color: #D09B89;
+   font-family: 'Nanum Gothic', sans-serif;
+ }
+
+nav {
+  border: 5px solid red;
+ }
+
+ nav a {
+   border: 5px solid blue;
+   text-align: center;
+   font-size: 1.5em;
+ }
+
+#header{
+  background-color: #5C5153;
+}
+
+#page-name{
+  font-family: 'Chelsea Market', sans-serif;
+  text-align: center;
+  font-size: 4em;
+  color: #F7F5F5;
+  padding: .5em 0em .5em 0em;
+}
