@@ -8,6 +8,15 @@
     <%= hidden_field_tag(:product, @product.id) %>
     Select a return date:
     <%= date_field :duration, params[:duration] %> <br>
+    <% if alert %>
+      <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
+
+    <style type="text/css">
+      .alert-danger{
+        color: red;
+      }
+    </style>
 	<%= submit_tag "Purchase" %>
 
 <h2> Reviews: </h2>

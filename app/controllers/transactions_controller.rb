@@ -1,7 +1,11 @@
 class TransactionsController < ApplicationController
 	def index
 		@product = Product.find(params[:product])
-		@date = Date.parse(params[:duration][0])
+		if params[:duration].all?(&:blank?)
+			redirect_to product_path(:id => @product), alert: "Please specify a date"
+		else
+			@date = Date.parse(params[:duration][0])
+		end
 	end
 
 	def make
