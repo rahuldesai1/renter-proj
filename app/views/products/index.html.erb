@@ -21,16 +21,10 @@
 	<%= submit_tag "Purchase" %>
 
 <h2> Reviews: </h2>
-<% if !@review.nil? %>
-    <% if @review.kind_of?(Array) %>
-        <% @review.each do |rev| %>
-            Rating: <%= rev.rating %> <br>
-            Comment: <%= rev.comment %> <br>
-            <br>
-        <% end %>
-    <% else %>
-        Rating: <%= @review.rating %> <br>
-        Comment: <%= @review.comment %> <br>
+<% if @review %>
+    <% @review.each do |rev| %>
+        Rating: <%= rev.rating %> <br>
+        Comment: <%= rev.comment %> <br>
         <br>
     <% end %>
 <% else %>

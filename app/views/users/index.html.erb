@@ -32,39 +32,28 @@
 <hr>
 <h3> Products: <br> </h3>
 <%if @products %>
-  <% if @products.kind_of?(Array) %>
     <% @products.each do |prod| %>
-      <%=prod[:name]%>
-      $<%=number_with_precision(prod[:price], :precision => 2)%>/week
-      <%=Product.find_by(id: prod[:id])%>
+       Name: <%=prod[:name]%> <br>
+       Price: $<%=number_with_precision(prod[:price], :precision => 2)%>/week
+       <br>
 	     <%= image_tag prod.img %> <br/>
-      <%end%>
-  <%else%>
-      Name: <%=@products[:name]%> <br>
-	  <%= image_tag @products.img %> <br/>
-      Price: $<%=number_with_precision(@products[:price], :precision => 2)%>/day
-	<%end%>
+       Available?: <%= prod.available %> <br/>
+       <br>
+    <%end%>
 <% end %>
 <hr>
 
 <h3> Transactions: </h3>
-<% if @transactions.kind_of?(Array) %>
+<%if @transactions %>
     <% @transactions.each do |prod| %>
-	  	<% if @transactions.status == false %>
+	  	<% if prod.status == false %>
       		Name: <%=Product.find_by(id: prod[:product_id])[:name]%>
-			<%= image_tag Product.find_by(id: @transactions[:product_id])[:img] %><br>
-      		Current?: <%=Product.find_by(id: prod[:product_id])[:status]%>
-			Return Date: <% prod[:duration] %>
-	  		<%= button_to 'Return', return_product_path(:product => Product.find_by(id: prod[:product_id]).id), method: :post %>
-		<% end %>
-	<% end %>
-<% elsif @transactions %>
-  	<% if @transactions.status == false %>
-      	Name: <%= Product.find_by(id: @transactions[:product_id])[:name]%> <br>
-		<%= image_tag Product.find_by(id: @transactions[:product_id])[:img] %><br>
-		Return Date: <%= @transactions[:duration] %>
-	  	<%= button_to 'Return', return_product_path(:product => Product.find_by(id: @transactions[:product_id]).id), method: :post %>
-	<% end %>
+			    <%= image_tag Product.find_by(id: prod[:product_id])[:img] %><br>
+      		Available?: <%= Product.find_by(id: prod[:product_id])[:available] %> <br>
+			    Return Date: <%= prod[:duration] %>
+	  		  <%= button_to 'Return', return_product_path(:product => Product.find_by(id: prod[:product_id]).id), method: :post %>
+		  <% end %>
+	 <% end %>
 <% end %>
 
 <p><%= link_to 'Go Home', home_path %></p>
