@@ -37,9 +37,11 @@
       <%=prod[:name]%>
       $<%=prod[:price]%>/week
       <%=Product.find_by(id: prod[:id])%>
+	  <%= image_tag prod.img %> <br/>
       <%end%>
   <%else%>
       Name: <%=@products[:name]%> <br>
+	  <%= image_tag @products.img %> <br/>
       Price: $<%=@products[:price]%>/week
 	<%end%>
 <% end %>
