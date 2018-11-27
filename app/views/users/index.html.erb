@@ -37,12 +37,12 @@
       <%=prod[:name]%>
       $<%=number_with_precision(prod[:price], :precision => 2)%>/week
       <%=Product.find_by(id: prod[:id])%>
-	  <%= image_tag prod.img %> <br/>
+	     <%= image_tag prod.img %> <br/>
       <%end%>
   <%else%>
       Name: <%=@products[:name]%> <br>
 	  <%= image_tag @products.img %> <br/>
-      Price: $<%=number_with_precision(@products[:price], :precision => 2)%>/week
+      Price: $<%=number_with_precision(@products[:price], :precision => 2)%>/day
 	<%end%>
 <% end %>
 <hr>
@@ -52,19 +52,20 @@
     <% @transactions.each do |prod| %>
 	  	<% if @transactions.status == false %>
       		Name: <%=Product.find_by(id: prod[:product_id])[:name]%>
-      		Price: <%=Product.find_by(id: prod[:product_id])[:price]%>
+			<%= image_tag Product.find_by(id: @transactions[:product_id])[:img] %><br>
       		Current?: <%=Product.find_by(id: prod[:product_id])[:status]%>
+			Return Date: <% prod[:duration] %>
 	  		<%= button_to 'Return', return_product_path(:product => Product.find_by(id: prod[:product_id]).id), method: :post %>
 		<% end %>
 	<% end %>
 <% elsif @transactions %>
   	<% if @transactions.status == false %>
       	Name: <%= Product.find_by(id: @transactions[:product_id])[:name]%> <br>
-      	Price: <%=Product.find_by(id: @transactions[:product_id])[:price]%>
+		<%= image_tag Product.find_by(id: @transactions[:product_id])[:img] %><br>
+		Return Date: <%= @transactions[:duration] %>
 	  	<%= button_to 'Return', return_product_path(:product => Product.find_by(id: @transactions[:product_id]).id), method: :post %>
 	<% end %>
 <% end %>
-
 
 <p><%= link_to 'Go Home', home_path %></p>
 <p><%= link_to 'Create a new product', product_new_path %></p>
