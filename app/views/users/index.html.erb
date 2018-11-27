@@ -26,7 +26,7 @@
 <% if current_user.balance == 0 %>
 	<p><%= link_to 'Add Balance', add_balance_path %></p>
 <% else %>
-	<h3> Balance: $<%= current_user.balance %></h3>
+	<h3> Balance: $<%= number_with_precision(current_user.balance, :precision => 2) %></h3>
 	<p><%= link_to 'Add Balance', add_balance_path %></p>
 <% end %>
 <hr>
@@ -37,9 +37,11 @@
       <%=prod[:name]%>
       $<%=prod[:price]%>/week
       <%=Product.find_by(id: prod[:id])%>
+	  <%= image_tag prod.img %> <br/>
       <%end%>
   <%else%>
       Name: <%=@products[:name]%> <br>
+	  <%= image_tag @products.img %> <br/>
       Price: $<%=@products[:price]%>/week
 	<%end%>
 <% end %>

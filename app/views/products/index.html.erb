@@ -1,5 +1,6 @@
 <h1> Product Details </h1>
 <h2><%= @product.name %></h2>
+<%= image_tag @product.img %> <br/>
 <p><%= @product.description %></p>
 <p>Owner: <%= @user.username %></p>
 <p>Price per day: $<%= number_with_precision(@product.price, :precision => 2) %> </p>
