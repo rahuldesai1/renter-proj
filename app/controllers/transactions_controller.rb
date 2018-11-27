@@ -35,6 +35,13 @@ class TransactionsController < ApplicationController
 		end
 
         return
+	end
 
+	def return
+		product = Product.find(params[:product])
+		transaction = Transaction.where("product_id = :prod and status = :status", {prod: params[:product], status: false})
+		transaction.update(status: true)
+		product.update(available: true)
+		redirect_to users_path, notice: "Product returned to owner"
 	end
 end

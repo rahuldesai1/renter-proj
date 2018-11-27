@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   post "/product/new", to: "products#create", as: "product_create"
   get "/transaction", to: "transactions#index", as: "transaction"
   post "/make", to: "transactions#make", as: "make_transaction"
-  
+  post "/return", to: "transactions#return", as: "return_product"
+
   get "user/balance", to: "users#balance", as: "add_balance"
   get "user/username", to: "users#username", to: "users#username", as: "username"
   post "user/balance/add", to: "users#addbalance", as: "create_balance"

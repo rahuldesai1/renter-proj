@@ -1,17 +1,32 @@
+<<<<<<< HEAD
 <head>
 		<title>Home | Renter.com</title>
 </head>
 
+=======
+<h1>Home Page</h1>
+>>>>>>> 4f8769ff85696a4c5a887e40e8477ed146e3ebe7
 <% if user_signed_in? %>
 <div id = "products">
 	<% @products.each do |product| %>
 		<% if product.available and current_user.id != Integer(product.owner_id) %>
+<<<<<<< HEAD
 			<div class = "prod">
 			<h2><%= product.name %></h2>
 			<p><%= product.description %></p>
 			<br/>
 			<%= image_tag product.img %> <br/>
 			<p> Price: $<%= product.price %></p> <br/>
+=======
+			<hr>
+			<b><%= product.name %></b> <br/>
+			<%= product.description %> <br/>
+			<br>
+			<% if product.img %>
+				<%= image_tag product.img %> <br/>
+			<% end %>
+			Price: $<%= number_with_precision(product.price, :precision => 2) %>/day <br/>
+>>>>>>> 4f8769ff85696a4c5a887e40e8477ed146e3ebe7
 			<%= link_to "Product Details", product_path(:id => product.id) %>
 			</div>
 		<% end %>

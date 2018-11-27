@@ -37,6 +37,12 @@ h2 {
    font-size: 2em;
  }
 
+ h3 {
+    text-align: center;
+    align: center;
+    font-size: 1.5em;
+  }
+
 
  a {
    text-decoration: none;
@@ -59,11 +65,7 @@ h2 {
    align: center;
  }
 
- img {
-   width: 100%;
-   display: inline-block;
-   align: center;
- }
+
 
 nav {
   margin: 0;
@@ -91,6 +93,12 @@ nav {
    margin: 20px;
    background-color: #DA8155;
    color: white;
+ }
+
+ .prod img {
+   width: 100%;
+   display: inline-block;
+   align: center;
  }
 
 

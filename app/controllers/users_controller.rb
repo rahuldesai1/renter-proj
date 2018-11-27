@@ -3,8 +3,8 @@ class UsersController < ApplicationController
 	before_action :authenticate_user!
 
 	def index
-		@products = Product.find_by_owner_id(current_user)
-		@transactions = Transaction.find_by_renter_id(current_user)
+		@products = Product.where(:owner_id => current_user)
+		@transactions = Transaction.where(:renter_id => current_user)
 		if not current_user.balance
 			current_user.balance = 0
 		end
