@@ -51,7 +51,7 @@
       Name: <%=Product.find_by(id: prod[:product_id])[:name]%>
       Price: <%=Product.find_by(id: prod[:product_id])[:price]%>
       Current?: <%=Product.find_by(id: prod[:product_id])[:status]%>
-      <%end%>
+    <%end%>
   <%elif @transactions%>
       Name: <%=Product.find_by(id: @transactions[:product_id])[:name]%> <br>
       Price: <%=Product.find_by(id: @transactions[:product_id])[:price]%>
