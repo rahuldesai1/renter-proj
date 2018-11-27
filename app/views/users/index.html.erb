@@ -45,6 +45,9 @@
        <br>
 	     <%= image_tag prod.img %> <br/>
        <p>Available?: <%= prod.available %> <br/></p>
+       <% if Transaction.find_by_product_id(prod.id) %>
+          <p><%= User.find(Transaction.find_by_product_id(prod.id).renter_id).email %></p>
+       <% end %>
        <br>
        </div>
     <%end%>
@@ -58,11 +61,12 @@
     <% @transactions.each do |prod| %>
       <div class = "prod">
 	  	<% if prod.status == false %>
-      		Name: <%=Product.find_by(id: prod[:product_id])[:name]%>
+      		<h3><%=Product.find_by(id: prod[:product_id])[:name]%> </h3>
 			    <%= image_tag Product.find_by(id: prod[:product_id])[:img] %><br>
-      		Available?: <%= Product.find_by(id: prod[:product_id])[:available] %> <br>
-			    Return Date: <%= prod[:duration] %>
+      		<p> Available?: <%= Product.find_by(id: prod[:product_id])[:available] %> </p><br>
+			    <p> Return Date: <%= prod[:duration] %>
 	  		  <%= button_to 'Return', return_product_path(:product => Product.find_by(id: prod[:product_id]).id), method: :post %>
+        </p>
 		  <% end %>
       </div>
 	 <% end %>
