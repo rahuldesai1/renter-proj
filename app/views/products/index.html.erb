@@ -24,12 +24,14 @@
 <% if !@review.nil? %>
     <% if @review.kind_of?(Array) %>
         <% @review.each do |rev| %>
-            <p> Rating: <%= rev.rating %> </p>
-            <p> Comment: <%= rev.comment %> </p>
+            Rating: <%= rev.rating %> <br>
+            Comment: <%= rev.comment %> <br>
+            <br>
         <% end %>
     <% else %>
-        <p> Rating: <%= @review.rating %> </p>
-        <p> Comment: <%= @review.comment %> </p>
+        Rating: <%= @review.rating %> <br>
+        Comment: <%= @review.comment %> <br>
+        <br>
     <% end %>
 <% else %>
     <p> No reviews </p>
