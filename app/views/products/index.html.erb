@@ -11,8 +11,8 @@
 
 <%= form_tag(transaction_path, :method => :get) %>
     <%= hidden_field_tag(:product, @product.id) %>
-    Select a return date:
-    <%= date_field :duration, params[:duration] %> <br>
+    <p>Select a return date:
+    <%= date_field :duration, params[:duration] %></p> <br>
     <% if alert %>
       <p class="alert alert-danger"><%= alert %></p>
     <% end %>
@@ -22,18 +22,18 @@
         color: red;
       }
     </style>
-	<%= submit_tag "Purchase" %>
-
+	<p><%= submit_tag "Purchase" %>
+</p>
 <h2> Reviews: </h2>
-<% if @review %>
+<p><% if @review %>
     <% @review.each do |rev| %>
-        Rating: <%= rev.rating %> <br>
+        Rating: <%= rev.rating %>/5 <br>
         Comment: <%= rev.comment %> <br>
         <br>
     <% end %>
 <% else %>
     <p> No reviews </p>
 <% end %>
-
+</p>
 <td><%= link_to 'Go Home', home_path %></td><br>
 <td><%= link_to "Write a Review", review_path(product: @product.id) %></td><br>
