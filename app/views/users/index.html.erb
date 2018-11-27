@@ -3,6 +3,23 @@
 </head>
 
 <h1>Profile</h1>
+
+<% if notice %>
+  <p class="alert alert-success"><%= notice %></p>
+<% end %>
+<% if alert %>
+  <p class="alert alert-danger"><%= alert %></p>
+<% end %>
+
+<style type="text/css">
+  .alert-success{
+    color: green;
+  }
+  .alert-danger{
+    color: red;
+  }
+</style>
+
 <% if current_user.username %>
 	<h3> Username: <%= current_user.username.capitalize %></h3>
 <% else %>
@@ -21,8 +38,14 @@
 <%if @products %>
   <% if @products.kind_of?(Array) %>
     <% @products.each do |prod| %>
+<<<<<<< HEAD
       Name: <%=prod[:name]%>
       Price: <%=prod[:price]%>
+=======
+      <%=prod[:name]%>
+      $<%=prod[:price]%>/week
+      <%=Product.find_by(id: prod[:id])%>
+>>>>>>> a983f249b95b2519ead4e74031b66c29a347be31
       <%end%>
   <%else%>
       Name: <%=@products[:name]%> <br>

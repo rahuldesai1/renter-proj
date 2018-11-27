@@ -17,8 +17,12 @@
 			<br>
 			<% if product.img %>
 			<%= image_tag product.img %> <br/>
+<<<<<<< HEAD
 			<% end %>
 			Price: $<%= product.price %> <br/>
+=======
+			Price: $<%= number_with_precision(product.price, :precision => 2) %>/day <br/>
+>>>>>>> a983f249b95b2519ead4e74031b66c29a347be31
 			<%= link_to "Product Details", product_path(:id => product.id) %>
 
 		<% end %>

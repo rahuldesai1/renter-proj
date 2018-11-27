@@ -6,8 +6,24 @@
 <h2><%= @product.name %></h2>
 <p><%= @product.description %></p>
 <p>Owner: <%= @user.username %></p>
-<p>Price: $<%= number_with_precision(@product.price, :precision => 2) %> </p>
-<h3> Reviews: </h3>
+<p>Price per day: $<%= number_with_precision(@product.price, :precision => 2) %> </p>
+
+<%= form_tag(transaction_path, :method => :get) %>
+    <%= hidden_field_tag(:product, @product.id) %>
+    Select a return date:
+    <%= date_field :duration, params[:duration] %> <br>
+    <% if alert %>
+      <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
+
+    <style type="text/css">
+      .alert-danger{
+        color: red;
+      }
+    </style>
+	<%= submit_tag "Purchase" %>
+
+<h2> Reviews: </h2>
 <% if !@review.nil? %>
     <% if @review.kind_of?(Array) %>
         <% @review.each do |rev| %>
@@ -24,4 +40,3 @@
 
 <td><%= link_to 'Go Home', home_path %></td><br>
 <td><%= link_to "Write a Review", review_path %></td><br>
-<td><%= link_to "Purchase", make_transaction_path(product: @product), method: :post %></td><br>

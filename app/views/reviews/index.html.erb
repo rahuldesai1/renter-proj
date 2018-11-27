@@ -1,5 +1,28 @@
+<<<<<<< HEAD
 <head>
 		<title> Write A Review | Renter.com</title>
 </head>
 
 <h1> Write a Review </h1>
+=======
+<h1> Write a Review for <%= @product.name %> </h1>
+
+
+
+<%= form_with url: review_create_path(product: @product), method: "post" do |f| %>
+
+<p> 
+	Rating: <%= f.text_field :rating %>
+<p>
+
+<p>
+	Comments: <%= f.text_field :comment %>
+<p>
+
+
+<%= f.submit "Submit" %>
+<% end %>
+
+
+<td><%= link_to 'Go Home', home_path %></td><br>
+>>>>>>> a983f249b95b2519ead4e74031b66c29a347be31
