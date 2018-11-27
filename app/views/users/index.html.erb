@@ -2,8 +2,6 @@
 		<title> <%= current_user.username.capitalize %>'s Profile | Renter.com</title>
 </head>
 
-<h1>Profile</h1>
-
 <% if notice %>
   <p class="alert alert-success"><%= notice %></p>
 <% end %>
@@ -21,41 +19,33 @@
 </style>
 
 <% if current_user.username %>
-	<h3> Username: <%= current_user.username.capitalize %></h3>
+	<h1><%= current_user.username.capitalize %>'s Profile</h1>
 <% else %>
 	<p><%= link_to 'Create a Username', username_path %></p>
 <% end %>
-<h3> Email: <%= current_user.email %></h3>
+<h2> Email: <%= current_user.email %></h2>
 
 <% if current_user.balance == 0 %>
 	<p><%= link_to 'Add Balance', add_balance_path %></p>
 <% else %>
-	<h3> Balance: $<%= current_user.balance %></h3>
+	<h2> Balance: $<%= current_user.balance %></h2>
 	<p><%= link_to 'Add Balance', add_balance_path %></p>
 <% end %>
-<hr>
-<h3> Products: <br> </h3>
+<h2> Products: <br> </h2>
 <%if @products %>
   <% if @products.kind_of?(Array) %>
     <% @products.each do |prod| %>
-<<<<<<< HEAD
-      Name: <%=prod[:name]%>
-      Price: <%=prod[:price]%>
-=======
-      <%=prod[:name]%>
-      $<%=prod[:price]%>/week
-      <%=Product.find_by(id: prod[:id])%>
->>>>>>> a983f249b95b2519ead4e74031b66c29a347be31
+      <p>Name: <%=prod[:name]%>
+      Price: <%=prod[:price]%></p>
       <%end%>
   <%else%>
-      Name: <%=@products[:name]%> <br>
-      Price: $<%=@products[:price]%>/week
+      <p>Name: <%=@products[:name]%> <br>
+      Price: $<%=@products[:price]%>/week</p>
 	<%end%>
 <% end %>
-<hr>
 
-<h3> Transactions: <br>
-  <% if @transactions.kind_of?(Array) %>
+<h2> Transactions: <br> </h2>
+  <p><% if @transactions.kind_of?(Array) %>
     <% @transactions.each do |prod| %>
       Name: <%=Product.find_by(id: prod[:product_id])[:name]%>
       Price: <%=Product.find_by(id: prod[:product_id])[:price]%>
@@ -64,8 +54,6 @@
   <%elif @transactions%>
       Name: <%=Product.find_by(id: @transactions[:product_id])[:name]%> <br>
       Price: <%=Product.find_by(id: @transactions[:product_id])[:price]%>
-<%end%> </h3>
+<%end%></p>
 
-
-<p><%= link_to 'Go Home', home_path %></p>
 <p><%= link_to 'Create a new product', product_new_path %></p>

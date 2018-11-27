@@ -1,32 +1,22 @@
 <head>
-		<title>Home</title>
+		<title>Home | Renter.com</title>
 </head>
 
-<h1>Home Page</h1>
-
 <% if user_signed_in? %>
-	<td><%= link_to "Profile", users_path %></td><br>
-	<br>
-	<%= link_to "Log out", destroy_user_session_path, :method => :delete %>
-
+<div id = "products">
 	<% @products.each do |product| %>
 		<% if product.available and current_user.id != Integer(product.owner_id) %>
-			<hr>
-			<b><%= product.name %></b> <br/>
-			<%= product.description %> <br/>
-			<br>
-			<% if product.img %>
+			<div class = "prod">
+			<h2><%= product.name %></h2>
+			<p><%= product.description %></p>
+			<br/>
 			<%= image_tag product.img %> <br/>
-<<<<<<< HEAD
-			<% end %>
-			Price: $<%= product.price %> <br/>
-=======
-			Price: $<%= number_with_precision(product.price, :precision => 2) %>/day <br/>
->>>>>>> a983f249b95b2519ead4e74031b66c29a347be31
+			<p> Price: $<%= product.price %></p> <br/>
 			<%= link_to "Product Details", product_path(:id => product.id) %>
-
+			</div>
 		<% end %>
 	<% end %>
+</div>
 
 <% else %>
 	<%= link_to "Sign in", users_path %><br />
